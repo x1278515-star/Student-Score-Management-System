@@ -18,7 +18,7 @@ Student-Score-Management-System/
 ├── 学生管理系统.vcxproj       # Visual Studio 项目文件
 ├── 学生管理系统.vcxproj.filters
 └── src/
-    └── 学生管理系统_改进版.cpp  # 主程序
+    └── 学生管理系统.cpp       # 主程序
 ```
 
 ## ✨ 功能说明
@@ -64,7 +64,7 @@ start 学生管理系统.sln
 ### 方法二：直接编译
 
 ```bash
-g++ src/学生管理系统_改进版.cpp -o student_manager
+g++ src/学生管理系统.cpp -o student_manager
 ./student_manager
 ```
 
