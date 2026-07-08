@@ -380,17 +380,29 @@ void displayStatistics(StudentNode* head) {
 
 // 按成绩排序（降序）- 返回新链表，不修改原链表
 StudentNode* sortByScore(StudentNode* head) {
-    if (!head || !head->next) {
-        return head;
+    if (!head) {
+        return NULL;
     }
 
-    // 使用冒泡排序的思想
+    // 先深拷贝原链表
+    StudentNode* newHead = NULL;
+    StudentNode* temp = head;
+    while (temp) {
+        newHead = addToList(newHead, temp->id, temp->name, temp->score);
+        temp = temp->next;
+    }
+
+    if (!newHead->next) {
+        return newHead;
+    }
+
+    // 冒泡排序（按成绩降序）
     int swapped;
     StudentNode* ptr1, * lptr = NULL;
 
     do {
         swapped = 0;
-        ptr1 = head;
+        ptr1 = newHead;
 
         while (ptr1->next != lptr) {
             if (ptr1->score < ptr1->next->score) {
@@ -417,7 +429,7 @@ StudentNode* sortByScore(StudentNode* head) {
         lptr = ptr1;
     } while (swapped);
 
-    return head;
+    return newHead;
 }
 
 // 保存到文件
